@@ -29,47 +29,62 @@ public class MultiplyMatrix {
      */
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int r1 = sc.nextInt();
-        int c1 = sc.nextInt();
+        Scanner sc  = new Scanner(System.in);
 
-        System.out.println("Matrix One");
-        int[][] matrixOne = new int[r1][c1];
-        for (int i=0 ; i<matrixOne.length ; i++){
-            for (int j=0 ; j<matrixOne[0].length ; j++){
+        System.out.print("Enter Rows for Matrix 1 : ");
+        int rows1 = sc.nextInt();
+        System.out.println();
+        System.out.print("Enter Columns for Matrix 1 : ");
+        int columns1 = sc.nextInt();
+        System.out.println();
+
+        int[][] matrixOne = new int[rows1][columns1];
+
+        for (int i=0 ; i<rows1 ; i++){
+            System.out.println(i + " Row");
+            for (int j=0 ; j<columns1 ; j++){
                 matrixOne[i][j] = sc.nextInt();
             }
         }
 
-        System.out.println("Matrix Two");
-        int r2 = sc.nextInt();
-        int c2 = sc.nextInt();
-        int[][] matrixTwo = new int[r2][c2];
-        for (int i=0 ; i<matrixTwo.length ; i++){
-            for (int j=0 ; j<c2 ; j++){
+        System.out.println("------------------------------------------");
+
+        System.out.print("Enter Rows for Matrix 2 : ");
+        int rows2 = sc.nextInt();
+        System.out.println();
+        System.out.print("Enter Columns for Matrix 2 : ");
+        int columns2 = sc.nextInt();
+        System.out.println();
+
+        int[][] matrixTwo = new int[rows2][columns2];
+
+        for (int i=0 ; i<rows2 ; i++){
+            System.out.println(i + " Row");
+            for (int j=0 ; j<columns2 ; j++){
                 matrixTwo[i][j] = sc.nextInt();
             }
         }
 
-        if (c1!=r2){
-            System.out.println("Columns of first Matrix must be equal to Rows of second Matrix");
+        if (columns1!=rows2){
+            System.err.println("Matrix cannot be Multiplied");
             return;
         }
 
-        int[][] multiplication = new int[r1][c2];
-        for (int i=0 ; i<r1 ; i++){
-            for (int j=0 ; j<c2 ; j++){
-                for (int m=0 ; m<r2 ; m++){
-                    multiplication[i][j]+= matrixOne[i][m] * matrixTwo[m][j];
+        int[][] multiply = new int[rows1][columns2];
+
+        for (int i=0 ; i<multiply.length ; i++){
+            for (int j=0 ; j<multiply[0].length ; j++){
+                for (int k=0 ; k<rows2 ; k++){
+                    multiply[i][j] += matrixOne[i][k] * matrixTwo[k][j];
                 }
             }
         }
 
-        for (int i=0 ; i<multiplication.length ; i++){
-            for(int j=0 ; j<multiplication[0].length ; j++){
-                System.out.print(multiplication[i][j] + " ");
+        for (int i=0 ; i<multiply.length ; i++){
+            System.out.println("---------------------------");
+            for (int j=0 ; j<multiply[0].length ; j++){
+                System.out.print(multiply[i][j] + "\t \t");
             }
-            System.out.println();
         }
     }
 }
