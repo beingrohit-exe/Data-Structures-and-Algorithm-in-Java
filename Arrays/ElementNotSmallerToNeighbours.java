@@ -25,6 +25,22 @@ public class ElementNotSmallerToNeighbours {
 
     public static void main(String[] args) {
         int[] array = {4,5,10,7,8,2,1};
-        System.out.println(peekIndex(array));
+//        System.out.println(peekIndex(array));
+
+        ForLambda demo = (array1 -> {
+            if (array1.length==1) return 0;
+            if(array1[0]>=array1[1]) return 1;
+            if (array1[array1.length-1]>array1[array1.length-2]) return 1;
+            for (int i=1 ; i<array1.length-1 ; i++){
+                if (array1[i]>=array1[i+1] && array1[i]>=array1[i-1]) return i;
+            }
+            return 0;
+        });
+
+        System.out.println(demo.demo(array));
     }
+}
+
+interface ForLambda{
+    int demo(int[] array);
 }
