@@ -24,7 +24,7 @@ public class LevelOrderLineWise {
                 cq.add(child);
             }
 
-            //Means on level is completed now we have to copy mq to cq
+            //Means one level is completed now we have to copy mq to cq
             if (mq.size()==0){
                 mq = cq;
                 cq = new ArrayDeque<>();
