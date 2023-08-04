@@ -136,6 +136,25 @@ public class AllMethods {
             removeLeafs(child);
         }
     }
+
+    public static void linearize(Node root){
+        for (Node child : root.children){
+            linearize(child);
+        }
+        while(root.children.size()>1){
+            Node lastChild = root.children.remove(root.children.size() - 1);
+            Node secondLastChild = root.children.get(root.children.size() - 1);
+            Node tail = getTail(secondLastChild);
+            tail.children.add(lastChild);
+        }
+    }
+
+    private static Node getTail(Node root){
+        while (root.children.size()==1){
+            root = root.children.get(0);
+        }
+        return root;
+    }
     public static void main(String[] args) {
         int[] array = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
         Stack<Node> stack = new Stack<>();
@@ -154,6 +173,7 @@ public class AllMethods {
                 stack.push(node);
             }
         }
-        lineWiseZigZag(root);
+        linearize(root);
+        display(root);
     }
 }
