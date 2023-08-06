@@ -25,6 +25,15 @@ public class LowestCommonAncestor {
         return new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(N)
+     * Space Compelexity -> O(N) Storing in Arraylist
+     * @param node
+     * @param p1
+     * @param p2
+     * @return
+     */
     public static int lowestAncestor(Node node, int p1, int p2){
         ArrayList<Integer> list1 = nodeToRootPath(node, p1);
         ArrayList<Integer> list2 = nodeToRootPath(node, p2);

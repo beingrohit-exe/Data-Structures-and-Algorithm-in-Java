@@ -10,6 +10,12 @@ public class RemoveLeafsFromGenericTree {
         ArrayList<Node> children = new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(N)
+     * Space Complexity -> O(1)
+     * @param root
+     */
     public static void removeLeafs(Node root){
         // Writing logic in Pre order so that code will not confuse between already leafs and created leafs
         for (int i=root.children.size()-1 ; i>=0 ; i--){

@@ -10,6 +10,21 @@ public class Are_Trees_Similar {
         ArrayList<Node> children = new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) {
+     *     Time Complexity will be O(N) as we have traversed every Node of both the trees if they are in same shape.
+     * }
+     *
+     * Space Complexity -> O(1) and O(logn) (Recursion) {
+     *      The space complexity is O(1) as we have not used any extra data structure.
+     *      As usual if we consider the recursion space then the space complexity will be O(logn)
+     *      as the max height of the stack at any point will be the same as the height of the tree i.e. O(logn).
+     * }
+     * @param tree1
+     * @param tree2
+     * @return
+     */
     public static boolean areSimilar(Node tree1, Node tree2){
         if (tree1.children.size()!=tree2.children.size())
             return false;

@@ -11,6 +11,26 @@ public class DisplayGenericTree {
         ArrayList<Node> children = new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) {
+     *     We are traversing the entire tree once, i.e. we are making a recursive call
+     *     for display of each node, hence the total time complexity is
+     *     O(n) where n = number of nodes in the generic tree.
+     * }
+     *
+     * Space Complexity -> O(1) (Auxiliary Space) and O(N) (Recursion Stack) {
+     *     1.) We are not taking any auxiliary data structure, hence extra space used is O(1).
+     *     2.) However, we are using recursion, which does take recursion call stack space.
+     *         The recursion can grow to the maximum depth of the tree.
+     *         Hence, the recursive stack will take O(d) space where d = depth of tree.
+     *
+     *     Note: In the worst case, the depth of the tree can be equal
+     *          to the number of nodes in the tree, if all nodes are linearly arranged.
+     *          Hence, the recursion call stack can take O(n) space in the worst case.
+     * }
+     * @param node
+     */
     public static void display(Node node){
         String str = node.data + " -> ";
         for (Node child : node.children){

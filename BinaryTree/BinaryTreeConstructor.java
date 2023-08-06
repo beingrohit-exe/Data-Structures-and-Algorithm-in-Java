@@ -25,6 +25,13 @@ public class BinaryTreeConstructor {
             this.state = state;
         }
     }
+
+    /**
+     *
+     * Time Complexity -> O(N) Tree Traversal is involved which is required
+     * Space Complexity -> O(N) Space used by Stack
+     * @param args
+     */
     public static void main(String[] args) {
         Integer[] array = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
         Stack<Pair> stack = new Stack<>();

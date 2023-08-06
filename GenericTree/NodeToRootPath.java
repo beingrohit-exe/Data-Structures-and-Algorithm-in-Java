@@ -9,6 +9,14 @@ public class NodeToRootPath {
         ArrayList<Node> children = new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) <br/>
+     * Space Complexity -> O(nlogn) (Equal to the height of the tree due to the recursion stack) <br/>
+     * @param root
+     * @param data
+     * @return
+     */
     public static ArrayList<Integer> nodeToRootPath(Node root, int data){
         if (root.data == data){
             ArrayList<Integer> list = new ArrayList<>();

@@ -13,8 +13,10 @@ public class MirrorGenericTree {
 
     /**
      *
-     * Keep a faith that all subtrees knows how to transform mirror
-     * Keeping in mind about this faith write code
+     * Time Complexity -> O(N) <br/>
+     * Space Complexity -> O(nlogn) (Equal to the height of the tree due to the recursion stack) <br/>
+     * Keep a faith that all subtrees knows how to transform mirror <br/>
+     * Keeping in mind about this faith write code <br/>
      * @param root
      */
     public static void mirror(Node root){

@@ -32,6 +32,21 @@ public class MaximumOfGenericTree {
         return size;
     }
 
+    /**
+     *
+     * Time Complexity -> O(N)
+     * Space Complexity -> { <br/>
+     *     Without Considering Recursion Space: Since we have not used any extra <br/>
+     *     data structure therefore the space complexity of this solution is O(1). <br/>
+     *     <br/>
+     *     Considering the Recursion Space: If we consider the recursion space <br/>
+     *     then the stack has at most logn elements in it at a time <br/>
+     *     (we will learn about this later in this section). <br/>
+     *     So, the space complexity considering the recursion space will be O(logn). <br/>
+     * }
+     * @param node
+     * @return
+     */
     public static int max(Node node){
         int max = Integer.MIN_VALUE;
         for (Node child : node.children){

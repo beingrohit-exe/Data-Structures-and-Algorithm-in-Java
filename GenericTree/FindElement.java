@@ -12,6 +12,8 @@ public class FindElement {
 
     /**
      *
+     * Time Complexity -> O(N)
+     * Space Compelexity -> O(1)
      * We have a faith that sub trees of root knows how to find the data
      * Note : Half Euler will be made in this question
      * @param root
