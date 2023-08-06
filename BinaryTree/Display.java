@@ -26,6 +26,12 @@ public class Display {
         }
     }
 
+    /**
+     *
+     * Time Complexity -> O(N)
+     * Space Complexity -> O(N) Recursion Stack
+     * @param node
+     */
     public static void display(Node node){
         String str = "";
         if (node == null){

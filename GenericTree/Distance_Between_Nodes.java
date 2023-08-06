@@ -26,6 +26,22 @@ public class Distance_Between_Nodes {
         return new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) {
+     *     Finding the node in the entire tree to get the node to the root path takes O(n).
+     *     Then, just traversing the node-to-root path (arrays) takes O(d) where d = depth of the node.
+     *     In the worst case, d can be equal to n, hence total time complexity will be O(n) only.
+     * }
+     *
+     * Space Complexity -> O(N) {
+     *     We are storing the Node the Root path so total auxiliary size is O(N).
+     * }
+     * @param root
+     * @param p1
+     * @param p2
+     * @return
+     */
     public static int distanceBetweenNodes(Node root, int p1, int p2){
         ArrayList<Integer> list1 = nodeToRootPath(root, p1);
         ArrayList<Integer> list2 = nodeToRootPath(root, p2);

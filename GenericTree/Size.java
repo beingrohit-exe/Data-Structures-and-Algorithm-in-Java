@@ -21,6 +21,19 @@ public class Size {
         }
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) <br/>
+     * Space Complexity -> O(N) { <br/>
+     *     Now the space complexity here is the runtime stack complexity. <br/>
+     *     In the worst case, we will have a tree like this. <br/>
+     *     10 -> 20 -> 30 -> 40 -> 50 -> 60 -> 70 (Linear Tree) <br/>
+     *     Here the recursive stack will have n items where n is the number of the nodes in the tree. <br/>
+     *     So, in the worst case the Space complexity (runtime) will be O(n) <br/>
+     * }
+     * @param node
+     * @return
+     */
     public static int size(Node node){
         int size = 0;
         for (Node child : node.children){

@@ -64,6 +64,12 @@ public class LevelOrderTraversal {
         System.out.println("Node Post : " + root.data);
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) <br/>
+     * Space Complexity -> O(N) A Queue of size N is used <br/>
+     * @param root
+     */
     public static void levelOrderTraversal(Node root){
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(root);

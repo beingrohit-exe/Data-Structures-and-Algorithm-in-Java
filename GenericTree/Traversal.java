@@ -20,6 +20,11 @@ public class Traversal {
         return height;
     }
 
+    /**
+     *
+     * @Time_Complexity O(2ⁿ)
+     * @Space_Complexity O(1)
+     */
     public static void traversals(Node root){
         //Area1 || Euler's Left || While going deep in the recursion || Preorder
         System.out.println("Node Pre " + root.data);

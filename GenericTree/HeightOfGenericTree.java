@@ -43,6 +43,16 @@ public class HeightOfGenericTree {
         return max;
     }
 
+    /**
+     *
+     * Time Complexity -> O(N) <br/>
+     * Space Complexity -> { <br/>
+     *     No Extra Space is used : O(1) <br/>
+     *     Recursion Stack : O(N) <br/>
+     * } <br/>
+     * @param root
+     * @return
+     */
     public static int height(Node root){
         int height = -1;
         for (Node child : root.children){

@@ -9,6 +9,19 @@ public class LinearizeGenericTree {
         ArrayList<Node> children = new ArrayList<>();
     }
 
+    /**
+     *
+     * Time Complexity -> O(n²) { <br/>
+     *     We have visited every node to linearize it. Although the leaf nodes do not get linearized, <br/>
+     *     still we have visited them and so, we have visited n nodes. <br/>
+     *     Also, when we visit them and try to linearize them, we visit all the nodes after linearizing <br/>
+     *     in order to find the tail and add the next node in the pre-order to its children's ArrayList. <br/>
+     *     This happens inside the first loop of traversal. So, in a way- we have a nested loop where we <br/>
+     *     are visiting almost n elements every time. So, the time complexity is O(n2). <br/>
+     * } <br/>
+     * Space Complexity -> O(1)
+     * @param root
+     */
     public static void linearize(Node root) {
         for (Node child : root.children) {
             linearize(child);

@@ -13,6 +13,13 @@ public class LevelOrderLineWise {
     }
 
     //Here we have to add all level in one line and other in next line
+
+    /**
+     *
+     * Time Complexity -> O(N)
+     * Space Complexity -> O(N) Storing in one or other Queue
+     * @param root
+     */
     public static void levelOrderLineWise(Node root){
         Queue<Node> mq = new ArrayDeque<>();
         mq.add(root);
