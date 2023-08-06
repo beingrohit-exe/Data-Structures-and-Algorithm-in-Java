@@ -56,12 +56,11 @@ public class Traversals {
      * } <br/>
      *
      * Space Complexity -> {
-     *     The space complexity is O(1) as we have not used any extra space
-     *     but if we consider the recursion space then the time complexity is O(log2n)
-     *     as the maximum height of a tree can be O(log2n) which is also the max height
-     *     of the recursion stack on which the space complexity depends.
-     * }
-     * @param args
+     *     The space complexity is O(1) as we have not used any extra space <br/>
+     *     but if we consider the recursion space then the time complexity is O(log2n) <br/>
+     *     as the maximum height of a tree can be O(log2n) which is also the max height <br/>
+     *     of the recursion stack on which the space complexity depends. <br/>
+     * } <br/>
      */
     public static void main(String[] args) {
         Integer[] array = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
