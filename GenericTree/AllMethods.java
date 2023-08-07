@@ -155,6 +155,76 @@ public class AllMethods {
         }
         return root;
     }
+
+    public static boolean findElement(Node root, int data){
+        if (root.data==data){
+            return true;
+        }
+        for (Node child : root.children){
+            boolean element = findElement(child, data);
+            if (element){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static ArrayList<Integer> nodeToRootPath(Node root, int data){
+        if (root.data==data){
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            arrayList.add(root.data);
+            return arrayList;
+        }
+        for (Node child : root.children){
+            ArrayList<Integer> list = nodeToRootPath(child, data);
+            if (list.size() > 0) {
+                list.add(root.data);
+                return list;
+            }
+        }
+        return new ArrayList<>();
+    }
+
+    public static int lowestCommonAncestor(Node root, int p1, int p2){
+        ArrayList<Integer> a1 = nodeToRootPath(root, p1);
+        ArrayList<Integer> a2 = nodeToRootPath(root, p2);
+        int i = a1.size()-1;
+        int j = a2.size()-1;
+        while(i>0 && j>0 && a1.get(i)==a2.get(j)){
+            i--;
+            j--;
+        }
+        i++;
+        j++;
+        return a1.get(i);
+    }
+
+    public static int distanceBetweenTwoNodes(Node root, int p1, int p2){
+        ArrayList<Integer> a1 = nodeToRootPath(root, p1);
+        ArrayList<Integer> a2 = nodeToRootPath(root, p2);
+        int i = a1.size()-1;
+        int j = a2.size()-1;
+        while(i>0 && j>0 && a1.get(i)==a2.get(j)){
+            i--;
+            j--;
+        }
+        i++;
+        j++;
+        return i + j;
+    }
+
+    public static boolean areSimilar(Node a, Node b){
+        if (a.children.size()!=b.children.size()){
+            return false;
+        }
+        for (int i=0 ; i<a.children.size() ; i++){
+            boolean isSimilar = areSimilar(a.children.get(i), b.children.get(i));
+            if (!isSimilar)
+                return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         int[] array = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
         Stack<Node> stack = new Stack<>();
