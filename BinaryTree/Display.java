@@ -45,7 +45,8 @@ public class Display {
         display(node.right);
     }
     public static void main(String[] args) {
-        Integer[] array = {50, 25, 12, null, null, 37, 30, null, null, null,75, 62, null, 70, null, null, 87, null, null};        Stack<Pair> stack = new Stack<>();
+        Integer[] array = {50, 25, 12, null, null, 37, 30, null, null, null,75, 62, null, 70, null, null, 87, null, null};
+        Stack<Pair> stack = new Stack<>();
         Node root = new Node(array[0], null ,null);
         Pair pair = new Pair(root, 1);
         stack.push(pair);
