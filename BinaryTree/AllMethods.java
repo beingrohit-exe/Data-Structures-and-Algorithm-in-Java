@@ -83,7 +83,7 @@ public class AllMethods {
         str += root.left == null ? "." : root.left.data;
         str += " <- " + root.data + " -> ";
         str += root.right == null ? "." : root.right.data;
-
+        System.out.println(str);
         display(root.left);
         display(root.right);
     }
@@ -265,7 +265,54 @@ public class AllMethods {
         }
     }
 
-    public static void main(String[] args) {
+    public static Node transformToLeftClonedTree(Node root){
+        if (root==null)
+            return null;
+        Node lnn = transformToLeftClonedTree(root.left);
+        Node rnn = transformToLeftClonedTree(root.right);
+        Node newNode = new Node(root.data);
+        newNode.left = lnn;
+        root.right = rnn;
+        return root;
+    }
 
+    public static Node transformBackToLeftClonedTree(Node root){
+        if (root==null)
+            return null;
+        root.left = transformToLeftClonedTree(root.left.left);
+        root.right = transformToLeftClonedTree(root.right);
+        return root;
+    }
+
+    public static void printSingleChildNodes(Node root, Node parent){
+        if (root==null)
+            return;
+        if (parent!=null && parent.left!=null && parent.right==null){
+            System.out.println(root.data);
+        }
+        if (parent!=null && parent.left==null && parent.right!=null){
+            System.out.println(root.data);
+        }
+        printSingleChildNodes(root.left, root);
+        printSingleChildNodes(root.right, root);
+    }
+
+    public static Node removeLeafs(Node root){
+        if (root==null)
+            return null;
+        if (root.left==null && root.right==null)
+            return null;
+        Node lnt = removeLeafs(root.left);
+        Node rnt = removeLeafs(root.right);
+        root.left = lnt;
+        root.right = rnt;
+        return root;
+    }
+
+    public static void main(String[] args) {
+        Integer[] array = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Node root = binaryTree(array);
+        Node node = removeLeafs(root);
+        display(node);
     }
 }
