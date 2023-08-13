@@ -3,9 +3,38 @@ package GenericTree;
 import java.util.*;
 
 public class AllMethods {
+
+    static int size;
+    static int min;
+    static int max;
+    static int height;
+    static int  state;
+    static Node predecessor;
+    static Node successor;
+
     private static class Node{
         int data;
         ArrayList<Node> children = new ArrayList<>();
+    }
+
+    public static Node genericTree(int[] array){
+        Stack<Node> stack = new Stack<>();
+        Node root = new Node();
+        for (int i : array){
+            if (i==-1){
+                stack.pop();
+            } else {
+                Node node = new Node();
+                node.data = i;
+                if (stack.size()>0){
+                    stack.peek().children.add(node);
+                } else {
+                    root = node;
+                }
+                stack.push(node);
+            }
+        }
+        return root;
     }
 
     public static void display(Node root){
@@ -225,25 +254,50 @@ public class AllMethods {
         return true;
     }
 
+    public static boolean areMirror(Node a, Node b){
+        if (a.children.size()!=b.children.size())
+            return false;
+        for (int i=0 ; i<a.children.size() ; i++){
+            Node a1 = a.children.get(i);
+            Node b1 = b.children.get(b.children.size()-1-i);
+            if (!areSimilar(a1, b1))
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isSymmetric(Node a, Node b){
+        return areMirror(a, b);
+    }
+
+    public static void multisolver(Node root, int depth){
+        size++;
+        min = Math.min(root.data, min);
+        max = Math.max(root.data, max);
+        height = Math.max(height, depth);
+        for (Node child : root.children){
+            multisolver(child, depth+1);
+        }
+    }
+
+    public static void predecessorSuccessor(Node root, int data){
+        if (state==0){
+            if (root.data==data){
+                state = 1;
+            } else {
+                predecessor = root;
+            }
+        } else if (state==1){
+            successor = root;
+            state = 2;
+        }
+        for (Node child : root.children){
+            predecessorSuccessor(child, data);
+        }
+    }
+
     public static void main(String[] args) {
         int[] array = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
-        Stack<Node> stack = new Stack<>();
-        Node root = new Node();
-        for (int i : array){
-            if (i==-1){
-                stack.pop();
-            } else {
-                Node node = new Node();
-                node.data = i;
-                if (stack.size()>0){
-                    stack.peek().children.add(node);
-                } else {
-                    root = node;
-                }
-                stack.push(node);
-            }
-        }
-        linearize(root);
-        display(root);
+        Node root = genericTree(array);
     }
 }
