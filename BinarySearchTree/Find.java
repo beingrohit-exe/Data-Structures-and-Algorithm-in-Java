@@ -35,4 +35,10 @@ public class Find {
         } else
             return true;
     }
+
+    public static void main(String[] args) {
+        int[] array = {12, 25, 37, 50, 62, 67, 87};
+        Node node = generate(array, 0, array.length - 1);
+        System.out.println(find(node, 26));
+    }
 }
