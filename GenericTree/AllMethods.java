@@ -1,5 +1,7 @@
 package GenericTree;
 
+import com.sun.jdi.IntegerType;
+
 import java.util.*;
 
 public class AllMethods {
@@ -11,6 +13,8 @@ public class AllMethods {
     static int  state;
     static Node predecessor;
     static Node successor;
+    static int ceil = 0;
+    static int floor = 0;
 
     private static class Node{
         int data;
@@ -294,6 +298,32 @@ public class AllMethods {
         for (Node child : root.children){
             predecessorSuccessor(child, data);
         }
+    }
+
+    public static void ceilFloor(Node root, int data){
+        if (root.data > data){
+            if (ceil > root.data)
+                ceil = root.data;
+        }
+
+        if (root.data < data){
+            if (root.data > floor){
+                floor = root.data;
+            }
+        }
+        for (Node child : root.children)
+            ceilFloor(child, data);
+    }
+
+    public static int kthLargestElement(Node root, int k){
+        floor = Integer.MIN_VALUE;
+        int factor = Integer.MAX_VALUE;
+        for (int i=0 ; i<k ; i++){
+            ceilFloor(root, factor);
+            factor = floor;
+            floor = Integer.MIN_VALUE;
+        }
+        return factor;
     }
 
     public static void main(String[] args) {
