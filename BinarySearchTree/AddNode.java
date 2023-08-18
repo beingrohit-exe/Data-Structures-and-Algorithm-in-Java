@@ -30,12 +30,10 @@ public class AddNode {
         if (node==null){
             return new Node(data, null, null);
         }
-        if (node.data > data)
+        if (data>node.data){
             node.right = addNode(node.right, data);
-        else if (node.data < data)
+        } else if (data<node.data){
             node.left = addNode(node.left, data);
-        else{
-
         }
         return node;
     }
