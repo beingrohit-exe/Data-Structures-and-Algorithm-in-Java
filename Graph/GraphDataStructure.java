@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GraphDataStructure {
 
-    static class Edge{
+    private static class Edge{
         int source;
         int neighbour;
         int weight;
