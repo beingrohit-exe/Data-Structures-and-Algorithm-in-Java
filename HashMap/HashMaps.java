@@ -1,6 +1,7 @@
 package HashMap;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class HashMaps {
 
@@ -28,5 +29,13 @@ public class HashMaps {
 
         System.out.println(hm.containsKey("India"));
         System.out.println(hm.containsKey("Utopia"));
+
+        Set<String> keys = hm.keySet();
+        System.out.println(keys);
+
+        for (String key : hm.keySet()){
+            Integer values = hm.get(key);
+            System.out.println(key + " -> " + values);
+        }
     }
 }
