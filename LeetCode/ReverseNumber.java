@@ -1,4 +1,4 @@
-package Tricks;
+package LeetCode;
 
 public class ReverseNumber {
     public static void main(String[] args) {
