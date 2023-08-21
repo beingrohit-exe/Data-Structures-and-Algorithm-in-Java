@@ -6,6 +6,7 @@ import java.util.Queue;
 public class RepeatedSubstringPattern {
 
     public static boolean repeatedSubstringPattern(String s){
+
 //        int n = s.length();
 //        for (int i=n/2 ; i>=1 ; i--){
 //            if (n%i==0){
