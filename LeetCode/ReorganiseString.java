@@ -63,7 +63,7 @@ public class ReorganiseString {
     }
 
     public static void main(String[] args) {
-        String s = "aab";
+        String s = "vvvnffvafdd";
         System.out.println(reorganiseString(s));
     }
 }

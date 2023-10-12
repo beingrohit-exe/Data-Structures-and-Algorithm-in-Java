@@ -29,7 +29,4 @@ class BubbleSort{
 			}
 		}
 	}
-
-	// 2n+1+ 5n^2 -> 5n^2 + 2n + 1
-	// n^2
 }
