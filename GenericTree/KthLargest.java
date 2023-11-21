@@ -8,16 +8,17 @@ public class KthLargest {
     static int floor;
     static int ceil;
 
-    private static class Node{
+    private static class Node {
         int data;
         ArrayList<Node> children = new ArrayList<>();
     }
 
-    public static Node genericTree(int[] array){
+    public static Node genericTree(int[] array) {
+
         Stack<Node> stack = new Stack<>();
         Node root = new Node();
-        for (int i : array){
-            if (i==-1)
+        for (int i : array) {
+            if (i == -1)
                 stack.pop();
             else {
                 Node temp = new Node();
@@ -32,26 +33,26 @@ public class KthLargest {
         return root;
     }
 
-    public static void ceilFloor(Node root, int data){
-        if (root.data > data){
-            if (root.data < ceil){
+    public static void ceilFloor(Node root, int data) {
+        if (root.data > data) {
+            if (root.data < ceil) {
                 ceil = root.data;
             }
         }
-        if (root.data < data){
-            if (root.data > floor){
+        if (root.data < data) {
+            if (root.data > floor) {
                 floor = root.data;
             }
         }
-        for (Node child : root.children){
+        for (Node child : root.children) {
             ceilFloor(child, data);
         }
     }
 
-    public static int kthLargestElement(Node root, int k){
+    public static int kthLargestElement(Node root, int k) {
         floor = Integer.MIN_VALUE;
         int factor = Integer.MAX_VALUE;
-        for (int i=0 ; i<k ; i++){
+        for (int i = 0; i < k; i++) {
             ceilFloor(root, factor);
             factor = floor;
             floor = Integer.MIN_VALUE;

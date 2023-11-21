@@ -1,32 +1,77 @@
 package HashMap;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
+
+/**
+ * Owner - Rohit Parihar
+ * Author - rohit
+ * Project - Data-Structures-and-Algorithm-in-Java
+ * Package - HashMap
+ * Created_on - 21 November-2023
+ * Created_at - 23 : 51
+ */
 
 public class HighestFrequencyCharacter {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
 
-        HashMap<Character, Integer> hm = new HashMap<>();
-        for (int i=0 ; i<str.length() ; i++){
-            char ch = str.charAt(i);
-            if (hm.containsKey(ch)){
-                Integer value = hm.get(ch);
-                int newFrequency = value + 1;
-                hm.put(ch, newFrequency);
+    public static char process(String data) {
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        for (int i=0 ; i<data.length() ; i++) {
+            char ch = data.charAt(i);
+            if (hashMap.containsKey(ch)) {
+                hashMap.put(ch, hashMap.get(ch) + 1);
             } else {
-                hm.put(ch, 1);
+                hashMap.put(ch, 1);
             }
         }
-
-        char maxFrequencyCharacter = str.charAt(0);
-        for (Character key : hm.keySet()){
-            if (hm.get(key) > hm.get(maxFrequencyCharacter)){
-                maxFrequencyCharacter = key;
+        char max = data.charAt(0);
+        for (Character key : hashMap.keySet()) {
+            if (hashMap.get(key) > hashMap.get(max)) {
+                max = key;
             }
         }
+        return max;
+    }
 
-        System.out.println(maxFrequencyCharacter);
+    public static char processOptimized(String data) {
+        Map<Character, Integer> charFrequencyMap = new HashMap<>();
+        for (char ch : data.toCharArray()) {
+            charFrequencyMap.put(ch, charFrequencyMap.getOrDefault(ch, 0) + 1);
+        }
+        int maxFrequency = 0;
+        char maxChar = data.charAt(0);
+
+        for (Map.Entry<Character, Integer> entry : charFrequencyMap.entrySet()) {
+            if (entry.getValue() > maxFrequency) {
+                maxFrequency = entry.getValue();
+                maxChar = entry.getKey();
+            }
+        }
+        return maxChar;
+    }
+
+    public static char usingStreamApi(String data) {
+        Map<Character, Integer> charFrequencyMap = new HashMap<>();
+        for (char ch : data.toCharArray()) {
+            charFrequencyMap.put(ch, charFrequencyMap.getOrDefault(ch, 0) + 1);
+        }
+        Map.Entry<Character, Integer> maxEntry = charFrequencyMap
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .orElse(null);
+        return (maxEntry!=null) ? maxEntry.getKey() : data.charAt(0);
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter Line : ");
+        String data = bufferedReader.readLine();
+        System.out.println(process(data));
     }
 }

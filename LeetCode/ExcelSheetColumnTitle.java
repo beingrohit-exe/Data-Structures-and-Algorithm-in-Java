@@ -21,7 +21,7 @@ public class ExcelSheetColumnTitle {
     }
 
     public static void main(String[] args) {
-        int columnNumber = 701;
+        int columnNumber = 1000;
         System.out.println(convertToTitle(columnNumber));
         System.out.println(convertToTitleRecursiveApproach(756454));
     }
