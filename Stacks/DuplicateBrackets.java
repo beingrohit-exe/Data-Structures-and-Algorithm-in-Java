@@ -12,28 +12,23 @@ public class DuplicateBrackets {
      * Once we pop the opening bracket then peek if there is open bracket then duplicate otherwise pop until next meet
      */
     public static void main(String[] args) {
-        Stack<Character> stack = new Stack<>();
-//        String a = "(a+b) + ((a+b))";
-        String a = "((a+b) + (a+b))";
-        for (int i=0 ; i<a.length() ; i++){
-            char b = a.charAt(i);
-            if (b==')'){
-                if (stack.peek()=='('){
-                    System.out.println(Boolean.TRUE);
-                    return;
-                }
-                else{
-                    while(stack.peek()!='('){
-                        stack.pop();
+        String data = "(1+2)+((4+5))"; // ((1+2) + (4+5))
+        Stack<Character> st = new Stack<>();
+        for (int i = 0 ; i<data.length() ; i++) {
+            char ch = data.charAt(i);
+            if (ch==')') {
+                if (st.peek().equals('(')) {
+                    System.out.println(true);
+                } else {
+                    while(st.peek()!='(') {
+                        st.pop();
                     }
-                    //For removing the opening bracket
-                    stack.pop();
+                    st.pop(); //For removing that bracket too
                 }
-            }
-            else {
-                stack.push(b);
+            } else {
+                st.push(ch);
             }
         }
-        System.out.println(Boolean.FALSE);
+        System.out.println(false);
     }
 }
