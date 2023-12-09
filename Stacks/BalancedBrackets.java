@@ -15,6 +15,11 @@ public class BalancedBrackets {
     }
     public static void main(String[] args) {
         Stack<Character> stack = new Stack<>();
+
+        // [(1+2)+{(4+5)*(6/7)}] -> true
+        // [(1+2)+{(4+5)*(6/7)]} -> false
+        // [(1+2)+{(4+5)*(6/7)} -> false
+        // ([(1+2) + {(4+5)*(6/7)}] -> false
         String a = "[(a+b) + {[a+b]}]";
         
         for (int i=0 ; i<a.length() ; i++){
